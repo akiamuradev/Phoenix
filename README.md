@@ -35,6 +35,19 @@ Sources may exist with no relationships. The same entity may have different plac
 
 ## Architecture
 
+Synnoema is designed around **large knowledge spaces, small visible projections**.
+The user chooses what to reveal: a Physics card may unfold into Electricity, then
+Ohm's law, then a relationship to Mathematics. Matching card titles do not imply
+matching identities. Multiple views can explore the same knowledge without copying it.
+
+“5 minutes to start, 5 years to reach the ceiling.” Data-driven customization comes
+first; future extensions can add adapters, renderers, commands, layouts, and reveal
+strategies through controlled core APIs. Missing optional extensions must preserve
+readable workspace structure. Projection and extension behavior is planned, not
+implemented in the foundation. See the
+[architecture rationale](docs/architecture/PROJECTION_AND_EXTENSIBILITY.md) and
+[implementation rules](AGENTS.md).
+
 ```text
 React + TypeScript application UI
              │

@@ -18,3 +18,13 @@ The canonical extension is `.synoema`, and the preferred MIME type is `applicati
 Workspace connections enable foreign-key enforcement and close automatically on drop. Public lifecycle commands also close explicitly so deferred SQLite errors can be reported.
 
 The schema is intentionally tiny. Graph entities, relations, sources, anchors, and placements enter through later explicit migrations after their models are validated.
+
+Future View/Projection data must remain separable from canonical knowledge:
+visibility or collapse does not determine existence. Multiple views reference the
+same persistent objects. Exact view storage is not fixed in schema 1.
+
+Optional extensions must not become required to read fundamental workspace
+structure. Future metadata should use stable namespaces, preserve unknown opaque
+data where safe through normal migrations, and never execute workspace contents.
+Extensions request mutations through core commands, not raw SQL. See the
+[architectural rationale](../architecture/PROJECTION_AND_EXTENSIBILITY.md).

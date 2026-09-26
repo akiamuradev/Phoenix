@@ -1,15 +1,14 @@
 use std::fs;
 
+use rusqlite::Connection;
 use synnoema_core::{
     Error,
     commands::{create_workspace, open_workspace},
     migrations::{
-        CURRENT_SCHEMA_VERSION, SYNNOEMA_APPLICATION_ID, WORKSPACE_FORMAT_NAME,
-        WORKSPACE_MIME_TYPE,
+        CURRENT_SCHEMA_VERSION, SYNNOEMA_APPLICATION_ID, WORKSPACE_FORMAT_NAME, WORKSPACE_MIME_TYPE,
     },
     storage::Workspace,
 };
-use rusqlite::Connection;
 use tempfile::tempdir;
 
 #[test]

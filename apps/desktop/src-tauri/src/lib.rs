@@ -1,5 +1,5 @@
-use synnoema_core::commands;
 use serde::Serialize;
+use synnoema_core::commands;
 
 #[derive(Serialize)]
 #[serde(rename_all = "camelCase")]

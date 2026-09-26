@@ -3,7 +3,7 @@ use rusqlite::{Connection, Transaction};
 use crate::Result;
 
 pub const CURRENT_SCHEMA_VERSION: u32 = 1;
-/// Stable SQLite application ID for Synnoema Workspace (`SYNO` in ASCII).
+/// Stable `SQLite` application ID for Synnoema Workspace (`SYNO` in ASCII).
 pub const SYNNOEMA_APPLICATION_ID: u32 = 0x5359_4E4F;
 pub const WORKSPACE_EXTENSION: &str = "synoema";
 pub const WORKSPACE_FORMAT_NAME: &str = "Synnoema Workspace";
