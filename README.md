@@ -1,0 +1,95 @@
+# Phoenix
+
+**Phoenix is an open-source local-first environment for building, exploring and connecting large spaces of knowledge.**
+
+Phoenix treats documents, media, notes, concepts, and graphs not as isolated files, but as addressable objects that can be connected into multiple independent knowledge graphs. A Phoenix workspace is stored as a portable `.phx` file.
+
+> Sources contain information.<br>
+> Phoenix stores how that information relates.
+
+## Status
+
+**Version: 0.0.1 — foundation**
+
+Phoenix is at the architectural foundation stage. The file format, domain model, and internal boundaries are being established before the visual graph editor. Expect breaking changes until the format reaches a stable specification.
+
+## Why Phoenix?
+
+Knowledge rarely exists in one format. One subject may involve books, PDFs, lectures, local media, office documents, web pages, notes, concepts, and arguments. File systems store these separately; note applications mostly connect notes; whiteboards mostly connect visual cards.
+
+Phoenix instead makes relationships between information first-class data. A PDF paragraph can connect to a video timestamp, a concept in one graph can connect to a concept in another, and users can create their own relationship types.
+
+## Core concepts
+
+- **Workspace:** a portable `.phx` SQLite file containing a knowledge space.
+- **Graph:** an independent knowledge context and a first-class object.
+- **Entity:** a persistent object, independent of its canvas representation.
+- **Source:** an external or local information resource whose identity Phoenix stores.
+- **Anchor:** an addressable fragment of a source, such as pages, text, or a time range.
+- **Relation type:** extensible data describing the semantic meaning of a relationship.
+- **Edge:** a persisted relationship between two entities.
+- **Placement:** the visual presence and position of an entity in a graph.
+- **Bridge:** a relationship crossing graph boundaries.
+
+Sources may exist with no relationships. The same entity may have different placements in multiple graphs without duplication. Cross-graph relationships preserve different contexts for the same idea rather than flattening everything into one canvas.
+
+## Architecture
+
+```text
+React + TypeScript application UI
+             │
+             │ Tauri IPC
+             ▼
+       phoenix-core (Rust)
+             │
+             ▼
+       SQLite (*.phx)
+```
+
+The canvas is a view, not the database. `phoenix-core` owns authoritative mutations, validation, transactions, storage, and migrations without depending on Tauri. The desktop shell is replaceable infrastructure.
+
+The long-term canvas renderer will use PixiJS/WebGL independently of React. Source providers such as PDF and YouTube remain adapters and do not leak into the graph model.
+
+## Repository
+
+```text
+apps/desktop/                 React frontend and Tauri 2 shell
+crates/phoenix-core/          UI-independent Rust core
+docs/format/                  Workspace format documentation
+```
+
+## Development
+
+Prerequisites:
+
+- Rust 1.85 or newer;
+- Node.js 22 or newer and npm;
+- the [Tauri 2 system dependencies](https://v2.tauri.app/start/prerequisites/) for your platform.
+
+```bash
+npm ci
+cargo test --workspace
+npm run typecheck
+npm run lint
+npm run build
+npm run dev
+```
+
+The UI can create and reopen a workspace path. The same lifecycle is covered directly through `phoenix-core` integration tests, with no graphical application required.
+
+## Design principles
+
+1. The canvas is a view, not the database.
+2. Sources, anchors, graphs, and relationships are first-class objects.
+3. Relationship types are extensible data, not a closed enum.
+4. Different graphs preserve different contexts.
+5. External integrations do not leak into the domain model.
+6. The desktop shell remains replaceable.
+7. Complexity appears only when the user needs it.
+8. A `.phx` file survives replacement of the UI implementation.
+
+## License
+
+Phoenix is free and open-source software licensed under the [GNU General Public License v3.0 or later](LICENSE) (`GPL-3.0-or-later`).
+
+See [ROADMAP.md](ROADMAP.md) for planned milestones and [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution workflow.
