@@ -1,0 +1,24 @@
+{
+  "name": "phoenix",
+  "version": "0.0.1",
+  "private": true,
+  "license": "GPL-3.0-or-later",
+  "workspaces": [
+    "apps/desktop"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace @phoenix/desktop",
+    "dev": "npm run tauri --workspace @phoenix/desktop -- dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "npm run lint --workspace @phoenix/desktop",
+    "typecheck": "npm run typecheck --workspace @phoenix/desktop"
+  },
+  "devDependencies": {
+    "prettier": "3.9.9"
+  },
+  "overrides": {
+    "zod": "4.6.5",
+    "zod-validation-error": "4.0.2"
+  }
+}

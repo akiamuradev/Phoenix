@@ -1,0 +1,23 @@
+[package]
+name = "phoenix-desktop"
+description = "Phoenix desktop shell"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[lib]
+name = "phoenix_desktop_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.6.3", features = [] }
+
+[dependencies]
+phoenix-core = { path = "../../../crates/phoenix-core" }
+serde = { version = "1.0.228", features = ["derive"] }
+tauri = { version = "2.11.6", features = [] }
+
+[lints]
+workspace = true

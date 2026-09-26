@@ -1,0 +1,18 @@
+[package]
+name = "phoenix-core"
+description = "UI-independent domain and workspace storage core for Phoenix"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+rusqlite = { version = "0.40.0", features = ["bundled"] }
+thiserror = "2.0.21"
+
+[dev-dependencies]
+tempfile = "3.27.0"
+
+[lints]
+workspace = true

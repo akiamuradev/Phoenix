@@ -1,0 +1,12 @@
+.directory
+.DS_Store
+node_modules/
+dist/
+target/
+*.tsbuildinfo
+apps/desktop/src-tauri/gen/
+*.phx
+*.phx-shm
+*.phx-wal
+.idea/
+.vscode/
