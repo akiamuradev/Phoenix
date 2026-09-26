@@ -19,7 +19,7 @@ pub fn create_workspace(path: impl AsRef<Path>) -> Result<WorkspaceMetadata> {
 ///
 /// # Errors
 ///
-/// Returns an error when the path is missing, is not a Phoenix workspace, has
+/// Returns an error when the path is missing, is not a Synnoema Workspace, has
 /// an unsupported schema, or cannot be inspected or closed.
 pub fn open_workspace(path: impl AsRef<Path>) -> Result<WorkspaceMetadata> {
     let workspace = Workspace::open(path)?;

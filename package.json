@@ -1,18 +1,19 @@
 {
-  "name": "phoenix",
+  "name": "synnoema",
   "version": "0.0.1",
   "private": true,
+  "author": "akiamuradev",
   "license": "GPL-3.0-or-later",
   "workspaces": [
     "apps/desktop"
   ],
   "scripts": {
-    "build": "npm run build --workspace @phoenix/desktop",
-    "dev": "npm run tauri --workspace @phoenix/desktop -- dev",
+    "build": "npm run build --workspace @synnoema/desktop",
+    "dev": "npm run tauri --workspace @synnoema/desktop -- dev",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "lint": "npm run lint --workspace @phoenix/desktop",
-    "typecheck": "npm run typecheck --workspace @phoenix/desktop"
+    "lint": "npm run lint --workspace @synnoema/desktop",
+    "typecheck": "npm run typecheck --workspace @synnoema/desktop"
   },
   "devDependencies": {
     "prettier": "3.9.9"

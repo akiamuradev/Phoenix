@@ -1,18 +1,18 @@
-# Phoenix Roadmap
+# Synnoema Roadmap
 
-This roadmap describes the shortest conservative path from an empty repository to the first usable Phoenix knowledge workspace. Early releases validate the data model and architecture before large integrations or automation.
+This roadmap describes the shortest conservative path from an empty repository to the first usable Synnoema knowledge workspace. Early releases validate the data model and architecture before large integrations or automation.
 
 ## 0.0.1 — Foundation
 
-**Goal:** create a repository whose architecture can survive the implementation of Phoenix.
+**Goal:** create a repository whose architecture can survive the implementation of Synnoema.
 
 - GPL-3.0-or-later project metadata, documentation, formatting, linting, and CI;
 - Tauri 2 desktop shell with a React, TypeScript, and Vite frontend;
-- independent Rust `phoenix-core` modules for model, storage, commands, and migrations;
-- versioned SQLite `.phx` creation, opening, validation, and safe close;
+- independent Rust `synnoema-core` modules for model, storage, commands, and migrations;
+- versioned SQLite `.synoema` creation, opening, validation, and safe close;
 - a first explicit migration and core lifecycle tests.
 
-Definition of done: Phoenix and its Rust core can create `example.phx`, close it, reopen it, and verify its schema. No graph editor is required.
+Definition of done: Synnoema and its Rust core can create `example.synoema`, close it, reopen it, and verify its schema. No graph editor is required.
 
 ## 0.0.2 — Graph kernel
 
@@ -22,7 +22,7 @@ Implement entities, graphs, placements, relation types, and edges with UUIDv7 id
 
 ## 0.0.3 — Canvas kernel
 
-**Goal:** display persisted Phoenix data visually for the first time.
+**Goal:** display persisted Synnoema data visually for the first time.
 
 Add a PixiJS renderer with pan, zoom, selection, nodes, edges, graph viewport, and persisted placement movement. React owns application chrome; PixiJS owns graph rendering. The architecture permits viewport culling from the beginning.
 
@@ -54,7 +54,7 @@ Add graph switching and overview, graph-to-graph and cross-graph relationships, 
 
 **Goal:** establish rendering architecture for very large workspaces.
 
-Introduce graph-, cluster-, node-, source-, and anchor-level representations, level-of-detail switching, viewport culling, and basic performance benchmarks. Phoenix does not attempt to display an entire workspace simultaneously.
+Introduce graph-, cluster-, node-, source-, and anchor-level representations, level-of-detail switching, viewport culling, and basic performance benchmarks. Synnoema does not attempt to display an entire workspace simultaneously.
 
 ## 0.0.9 — Search and navigation
 
@@ -62,7 +62,7 @@ Introduce graph-, cluster-, node-, source-, and anchor-level representations, le
 
 Use SQLite FTS5 for notes, names, relation types, source metadata, and extracted PDF text. Add global search and navigation to entities, graphs, sources, and anchors. Semantic/vector search remains out of scope.
 
-## 0.1.0 — First usable Phoenix
+## 0.1.0 — First usable Synnoema
 
 **Goal:** demonstrate the complete core idea.
 
@@ -74,7 +74,7 @@ Real usage will determine the order of office-document and web sources, relation
 
 ## Permanent constraints
 
-- `phoenix-core` remains independent from the desktop shell.
+- `synnoema-core` remains independent from the desktop shell.
 - The canvas is never authoritative storage.
 - Custom relationship types remain part of the core format.
 - Integrations remain adapters rather than graph-model assumptions.

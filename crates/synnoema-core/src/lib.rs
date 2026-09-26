@@ -1,4 +1,4 @@
-//! UI-independent Phoenix domain and persistence core.
+//! UI-independent Synnoema domain and persistence core.
 
 pub mod commands;
 pub mod migrations;
@@ -7,14 +7,16 @@ pub mod storage;
 
 use std::path::PathBuf;
 
-/// Errors produced by Phoenix workspace operations.
+/// Errors produced by Synnoema Workspace operations.
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
+    #[error("workspace path must use the .synoema extension: {0}")]
+    InvalidWorkspaceExtension(PathBuf),
     #[error("workspace already exists: {0}")]
     WorkspaceAlreadyExists(PathBuf),
     #[error("workspace does not exist: {0}")]
     WorkspaceNotFound(PathBuf),
-    #[error("path is not a Phoenix workspace: {0}")]
+    #[error("path is not a Synnoema Workspace: {0}")]
     InvalidWorkspace(PathBuf),
     #[error("workspace schema {found} is newer than supported schema {supported}")]
     UnsupportedSchema { found: u32, supported: u32 },

@@ -1,30 +1,30 @@
-# Phoenix
+# Synnoema
 
-**Phoenix is an open-source local-first environment for building, exploring and connecting large spaces of knowledge.**
+**Synnoema is an open-source local-first environment for building, exploring and connecting large spaces of knowledge.**
 
-Phoenix treats documents, media, notes, concepts, and graphs not as isolated files, but as addressable objects that can be connected into multiple independent knowledge graphs. A Phoenix workspace is stored as a portable `.phx` file.
+Synnoema treats documents, media, notes, concepts, and graphs not as isolated files, but as addressable objects that can be connected into multiple independent knowledge graphs. A Synnoema Workspace is stored as a portable `.synoema` file.
 
 > Sources contain information.<br>
-> Phoenix stores how that information relates.
+> Synnoema stores how that information relates.
 
 ## Status
 
 **Version: 0.0.1 — foundation**
 
-Phoenix is at the architectural foundation stage. The file format, domain model, and internal boundaries are being established before the visual graph editor. Expect breaking changes until the format reaches a stable specification.
+Synnoema is at the architectural foundation stage. The file format, domain model, and internal boundaries are being established before the visual graph editor. Expect breaking changes until the format reaches a stable specification.
 
-## Why Phoenix?
+## Why Synnoema?
 
 Knowledge rarely exists in one format. One subject may involve books, PDFs, lectures, local media, office documents, web pages, notes, concepts, and arguments. File systems store these separately; note applications mostly connect notes; whiteboards mostly connect visual cards.
 
-Phoenix instead makes relationships between information first-class data. A PDF paragraph can connect to a video timestamp, a concept in one graph can connect to a concept in another, and users can create their own relationship types.
+Synnoema instead makes relationships between information first-class data. A PDF paragraph can connect to a video timestamp, a concept in one graph can connect to a concept in another, and users can create their own relationship types.
 
 ## Core concepts
 
-- **Workspace:** a portable `.phx` SQLite file containing a knowledge space.
+- **Workspace:** a portable `.synoema` SQLite file containing a knowledge space.
 - **Graph:** an independent knowledge context and a first-class object.
 - **Entity:** a persistent object, independent of its canvas representation.
-- **Source:** an external or local information resource whose identity Phoenix stores.
+- **Source:** an external or local information resource whose identity Synnoema stores.
 - **Anchor:** an addressable fragment of a source, such as pages, text, or a time range.
 - **Relation type:** extensible data describing the semantic meaning of a relationship.
 - **Edge:** a persisted relationship between two entities.
@@ -40,13 +40,14 @@ React + TypeScript application UI
              │
              │ Tauri IPC
              ▼
-       phoenix-core (Rust)
+ Synnoema Core / synnoema-core
+            Rust
              │
              ▼
-       SQLite (*.phx)
+       SQLite (*.synoema)
 ```
 
-The canvas is a view, not the database. `phoenix-core` owns authoritative mutations, validation, transactions, storage, and migrations without depending on Tauri. The desktop shell is replaceable infrastructure.
+The canvas is a view, not the database. `synnoema-core` owns authoritative mutations, validation, transactions, storage, and migrations without depending on Tauri. The desktop shell is replaceable infrastructure.
 
 The long-term canvas renderer will use PixiJS/WebGL independently of React. Source providers such as PDF and YouTube remain adapters and do not leak into the graph model.
 
@@ -54,7 +55,7 @@ The long-term canvas renderer will use PixiJS/WebGL independently of React. Sour
 
 ```text
 apps/desktop/                 React frontend and Tauri 2 shell
-crates/phoenix-core/          UI-independent Rust core
+crates/synnoema-core/          UI-independent Rust core
 docs/format/                  Workspace format documentation
 ```
 
@@ -75,7 +76,7 @@ npm run build
 npm run dev
 ```
 
-The UI can create and reopen a workspace path. The same lifecycle is covered directly through `phoenix-core` integration tests, with no graphical application required.
+The UI can create and reopen a workspace path. The same lifecycle is covered directly through `synnoema-core` integration tests, with no graphical application required.
 
 ## Design principles
 
@@ -86,10 +87,12 @@ The UI can create and reopen a workspace path. The same lifecycle is covered dir
 5. External integrations do not leak into the domain model.
 6. The desktop shell remains replaceable.
 7. Complexity appears only when the user needs it.
-8. A `.phx` file survives replacement of the UI implementation.
+8. A `.synoema` file survives replacement of the UI implementation.
 
 ## License
 
-Phoenix is free and open-source software licensed under the [GNU General Public License v3.0 or later](LICENSE) (`GPL-3.0-or-later`).
+Synnoema is free and open-source software licensed under the [GNU General Public License v3.0 or later](LICENSE) (`GPL-3.0-or-later`).
+
+Copyright (C) 2026 akiamuradev.
 
 See [ROADMAP.md](ROADMAP.md) for planned milestones and [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution workflow.

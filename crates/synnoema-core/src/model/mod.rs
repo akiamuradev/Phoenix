@@ -1,4 +1,4 @@
-/// Stable workspace metadata stored in every `.phx` file.
+/// Stable workspace metadata stored in every `.synoema` file.
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct WorkspaceMetadata {
     pub format: String,

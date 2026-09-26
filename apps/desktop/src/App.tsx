@@ -8,7 +8,7 @@ type WorkspaceSummary = {
 };
 
 export default function App() {
-  const [path, setPath] = useState("example.phx");
+  const [path, setPath] = useState("example.synoema");
   const [status, setStatus] = useState("No workspace open");
   const [busy, setBusy] = useState(false);
 
@@ -34,7 +34,7 @@ export default function App() {
   return (
     <main>
       <section className="hero" aria-labelledby="title">
-        <p className="eyebrow">Phoenix 0.0.1</p>
+        <p className="eyebrow">Synnoema 0.0.1</p>
         <h1 id="title">Build a space for connected knowledge.</h1>
         <p className="lede">
           A local-first foundation for portable knowledge workspaces. The graph

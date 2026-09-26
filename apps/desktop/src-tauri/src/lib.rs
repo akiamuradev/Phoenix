@@ -1,4 +1,4 @@
-use phoenix_core::commands;
+use synnoema_core::commands;
 use serde::Serialize;
 
 #[derive(Serialize)]
@@ -30,7 +30,7 @@ fn open_workspace(path: String) -> Result<WorkspaceSummary, String> {
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
-/// Starts the Phoenix desktop runtime.
+/// Starts the Synnoema desktop runtime.
 ///
 /// # Panics
 ///
@@ -39,5 +39,5 @@ pub fn run() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![create_workspace, open_workspace])
         .run(tauri::generate_context!())
-        .expect("error while running Phoenix");
+        .expect("error while running Synnoema");
 }

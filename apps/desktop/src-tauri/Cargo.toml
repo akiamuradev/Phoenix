@@ -1,6 +1,6 @@
 [package]
-name = "phoenix-desktop"
-description = "Phoenix desktop shell"
+name = "synnoema"
+description = "Synnoema desktop shell"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -8,14 +8,14 @@ repository.workspace = true
 rust-version.workspace = true
 
 [lib]
-name = "phoenix_desktop_lib"
+name = "synnoema_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
 tauri-build = { version = "2.6.3", features = [] }
 
 [dependencies]
-phoenix-core = { path = "../../../crates/phoenix-core" }
+synnoema-core = { path = "../../../crates/synnoema-core" }
 serde = { version = "1.0.228", features = ["derive"] }
 tauri = { version = "2.11.6", features = [] }
 

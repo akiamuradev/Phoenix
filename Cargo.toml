@@ -1,7 +1,7 @@
 [workspace]
 members = [
     "apps/desktop/src-tauri",
-    "crates/phoenix-core",
+    "crates/synnoema-core",
 ]
 resolver = "2"
 
@@ -9,7 +9,8 @@ resolver = "2"
 version = "0.0.1"
 edition = "2024"
 license = "GPL-3.0-or-later"
-repository = "https://github.com/akiamuradev/Phoenix"
+authors = ["akiamuradev"]
+repository = "https://github.com/akiamuradev/synnoema"
 rust-version = "1.85"
 
 [workspace.lints.rust]

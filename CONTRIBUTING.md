@@ -1,6 +1,6 @@
-# Contributing to Phoenix
+# Contributing to Synnoema
 
-Phoenix is early-stage software. Small, focused changes that preserve its architectural boundaries are the most useful contributions.
+Synnoema is early-stage software. Small, focused changes that preserve its architectural boundaries are the most useful contributions.
 
 ## Workflow
 
@@ -11,7 +11,7 @@ Phoenix is early-stage software. Small, focused changes that preserve its archit
 5. Push the branch and open a pull request targeting `main`.
 6. Merge only after required checks succeed, then delete the branch.
 
-Do not commit directly to `main`, generated build output, `.phx` workspaces, caches, credentials, or editor state.
+Do not commit directly to `main`, generated build output, `.synoema` workspaces, caches, credentials, or editor state.
 
 ## Quality checks
 
@@ -32,7 +32,7 @@ Platform-specific desktop work should also be checked on Linux, Windows, and mac
 
 ## Architecture
 
-- Keep domain rules and persistence in `phoenix-core`; it must not depend on Tauri.
+- Keep domain rules and persistence in `synnoema-core`; it must not depend on Tauri.
 - Treat SQLite workspace data as authoritative and every canvas as a view.
 - Model relationship types as extensible data.
 - Keep source-provider details behind adapter boundaries.

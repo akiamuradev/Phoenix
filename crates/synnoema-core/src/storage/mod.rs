@@ -4,11 +4,14 @@ use rusqlite::{Connection, OpenFlags};
 
 use crate::{
     Error, Result,
-    migrations::{CURRENT_SCHEMA_VERSION, PHOENIX_APPLICATION_ID, apply_all, schema_version},
+    migrations::{
+        CURRENT_SCHEMA_VERSION, SYNNOEMA_APPLICATION_ID, WORKSPACE_EXTENSION,
+        WORKSPACE_FORMAT_NAME, apply_all, schema_version,
+    },
     model::WorkspaceMetadata,
 };
 
-/// An open Phoenix workspace. Its `SQLite` connection closes on drop.
+/// An open Synnoema Workspace. Its `SQLite` connection closes on drop.
 pub struct Workspace {
     connection: Connection,
     path: PathBuf,
@@ -23,6 +26,9 @@ impl Workspace {
     /// migrate the workspace.
     pub fn create(path: impl AsRef<Path>) -> Result<Self> {
         let path = path.as_ref();
+        if path.extension().and_then(|extension| extension.to_str()) != Some(WORKSPACE_EXTENSION) {
+            return Err(Error::InvalidWorkspaceExtension(path.to_owned()));
+        }
         if path.exists() {
             return Err(Error::WorkspaceAlreadyExists(path.to_owned()));
         }
@@ -32,7 +38,7 @@ impl Workspace {
             OpenFlags::SQLITE_OPEN_READ_WRITE | OpenFlags::SQLITE_OPEN_CREATE,
         )?;
         configure(&connection)?;
-        connection.pragma_update(None, "application_id", PHOENIX_APPLICATION_ID)?;
+        connection.pragma_update(None, "application_id", SYNNOEMA_APPLICATION_ID)?;
         apply_all(&mut connection)?;
 
         Ok(Self {
@@ -41,11 +47,11 @@ impl Workspace {
         })
     }
 
-    /// Opens and validates an existing Phoenix workspace.
+    /// Opens and validates an existing Synnoema Workspace.
     ///
     /// # Errors
     ///
-    /// Returns an error when the path is missing, is not a Phoenix workspace,
+    /// Returns an error when the path is missing, is not a Synnoema Workspace,
     /// uses an unsupported schema, or cannot be opened by `SQLite`.
     pub fn open(path: impl AsRef<Path>) -> Result<Self> {
         let path = path.as_ref();
@@ -105,7 +111,7 @@ fn configure(connection: &Connection) -> Result<()> {
 fn validate(connection: &Connection, path: &Path) -> Result<()> {
     let application_id: u32 =
         connection.pragma_query_value(None, "application_id", |row| row.get(0))?;
-    if application_id != PHOENIX_APPLICATION_ID {
+    if application_id != SYNNOEMA_APPLICATION_ID {
         return Err(Error::InvalidWorkspace(path.to_owned()));
     }
 
@@ -136,7 +142,7 @@ fn validate(connection: &Connection, path: &Path) -> Result<()> {
     }
 
     let format = metadata_value(connection, "format")?;
-    if format != "phoenix" {
+    if format != WORKSPACE_FORMAT_NAME {
         return Err(Error::InvalidWorkspace(path.to_owned()));
     }
 

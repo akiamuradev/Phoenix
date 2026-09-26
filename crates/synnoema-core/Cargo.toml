@@ -1,6 +1,6 @@
 [package]
-name = "phoenix-core"
-description = "UI-independent domain and workspace storage core for Phoenix"
+name = "synnoema-core"
+description = "UI-independent domain and workspace storage core for Synnoema"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

@@ -1,7 +1,8 @@
 {
-  "name": "@phoenix/desktop",
+  "name": "@synnoema/desktop",
   "version": "0.0.1",
   "private": true,
+  "author": "akiamuradev",
   "type": "module",
   "license": "GPL-3.0-or-later",
   "scripts": {

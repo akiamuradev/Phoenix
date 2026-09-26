@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Phoenix",
+  "productName": "Synnoema",
   "version": "0.0.1",
-  "identifier": "dev.akiamura.phoenix",
+  "identifier": "io.github.akiamuradev.synnoema",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "Phoenix",
+        "title": "Synnoema",
         "width": 1100,
         "height": 720,
         "minWidth": 720,
@@ -25,6 +25,8 @@
   },
   "bundle": {
     "active": true,
-    "targets": "all"
+    "targets": "all",
+    "publisher": "akiamuradev",
+    "copyright": "Copyright (C) 2026 akiamuradev"
   }
 }

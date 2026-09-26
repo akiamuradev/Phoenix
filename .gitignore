@@ -5,8 +5,8 @@ dist/
 target/
 *.tsbuildinfo
 apps/desktop/src-tauri/gen/
-*.phx
-*.phx-shm
-*.phx-wal
+*.synoema
+*.synoema-shm
+*.synoema-wal
 .idea/
 .vscode/
