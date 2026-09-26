@@ -32,6 +32,10 @@ Platform-specific desktop work should also be checked on Linux, Windows, and mac
 
 ## Architecture
 
+Read [AGENTS.md](AGENTS.md), [ROADMAP.md](ROADMAP.md), and the
+[projection/extensibility rationale](docs/architecture/PROJECTION_AND_EXTENSIBILITY.md)
+before changing domain, rendering, or integration boundaries.
+
 - Keep domain rules and persistence in `synnoema-core`; it must not depend on Tauri.
 - Treat SQLite workspace data as authoritative and every canvas as a view.
 - Model relationship types as extensible data.
